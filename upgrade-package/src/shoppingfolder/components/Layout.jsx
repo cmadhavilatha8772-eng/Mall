@@ -1,0 +1,19 @@
+import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+
+const Layout = () => {
+  const location = useLocation();
+  console.log('Current location.pathname:', location.pathname);
+
+  return (
+    <div>
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
+
+export default Layout;

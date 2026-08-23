@@ -1,19 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import gentsBanner from "../../../assets/GentsBanner.gif";
-import ladiesBanner from "../../../assets/LadiesBanner.gif";
 
 const SLIDES = [
   {
-    image: gentsBanner,
+    image: 'assets/GentsBanner.gif',
     eyebrow: 'End of Season Sale',
     title: '50–70% OFF',
     cta: 'Shop Men',
     to: '/men',
   },
   {
-    image: ladiesBanner,
+    image: 'assets/LadiesBanner.gif',
     eyebrow: "Women's Collection",
     title: '30–60% OFF',
     cta: 'Explore Collection',

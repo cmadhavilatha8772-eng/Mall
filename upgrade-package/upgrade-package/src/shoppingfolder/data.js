@@ -1,29 +1,4 @@
 // Centralized mock product data — built from your existing assets/Men and assets/Woman images.
-const menImageModules = import.meta.glob('/assets/Men/*.jpg', { eager: true, import: 'default' });
-const womenImageModules = import.meta.glob('/assets/Woman/*.jpg', { eager: true, import: 'default' });
-
-console.log('menImageModules raw:', menImageModules);
-console.log('womenImageModules raw:', womenImageModules);
-
-const menImages = Object.keys(menImageModules)
-  .sort((a, b) => {
-    const numA = parseInt(a.match(/(\d+)\.jpg$/)[1], 10);
-    const numB = parseInt(b.match(/(\d+)\.jpg$/)[1], 10);
-    return numA - numB;
-  })
-  .map((key) => menImageModules[key]);
-
-const womenImages = Object.keys(womenImageModules)
-  .sort((a, b) => {
-    const numA = parseInt(a.match(/(\d+)\.jpg$/)[1], 10);
-    const numB = parseInt(b.match(/(\d+)\.jpg$/)[1], 10);
-    return numA - numB;
-  })
-  .map((key) => womenImageModules[key]);
-
-console.log('menImages array:', menImages);
-console.log('womenImages array:', womenImages);
-
 const menBrands = ['Roadster', 'H&M', "Levi's", 'Puma', 'Allen Solly', 'U.S. Polo'];
 const womenBrands = ['Vero Moda', 'Zara', 'Only', 'AND', 'W', 'Biba'];
 
@@ -38,7 +13,7 @@ export const mensProducts = [559, 459, 659, 759, 859, 959].map((price, i) => ({
   discount: 38,
   rating: (4 + (i % 5) / 10).toFixed(1),
   reviews: 60 + i * 23,
-  image: menImages[i],
+  image: `assets/Men/${i + 1}.jpg`,
   isNew: i % 2 === 0,
   isSale: true,
   stock: 20,
@@ -55,7 +30,7 @@ export const womensProducts = [1559, 1459, 1659, 1759, 1859, 1959].map((price, i
   discount: 33,
   rating: (4 + ((i + 2) % 5) / 10).toFixed(1),
   reviews: 45 + i * 31,
-  image: womenImages[i],
+  image: `assets/Woman/${i + 1}.jpg`,
   isNew: i % 3 === 0,
   isSale: true,
   stock: 20,
@@ -63,5 +38,6 @@ export const womensProducts = [1559, 1459, 1659, 1759, 1859, 1959].map((price, i
 
 export const allProducts = [...mensProducts, ...womensProducts];
 
+// Kept so anything still importing the old shape doesn't break.
 export const Gents = { title: 'Gents Fashion', products: mensProducts };
 export const Ladies = { title: 'Ladies Fashion', products: womensProducts };
